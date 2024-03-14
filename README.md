@@ -1,15 +1,6 @@
 ##DIAGRAMS
 
 '''mermaid
-sequenceDiagram
-    participant pygame
-    participant Music
-    participant Nivel
-    participant Enemy
-    participant Luna
-
-    Note over pygame, Music, Nivel, Enemy, Luna: Inicialización del juego
-
     Luna->>Music: music_fondo()
     Luna->>Nivel: inicio()
     loop Bucle Principal
@@ -22,5 +13,4 @@ sequenceDiagram
         Luna->>pygame: display.flip()
         pygame->>pygame: clock.tick(15)
     end
-
 '''
