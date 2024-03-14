@@ -1,7 +1,6 @@
 ##DIAGRAMS
 
 '''mermaid
-graph LR;
 classDiagram
     class Pantalla {
         -screen
