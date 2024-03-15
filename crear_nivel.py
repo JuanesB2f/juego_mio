@@ -1,5 +1,5 @@
 import pygame
-import Luna
+import Player
 import Enemy
 import Nivel
 import Music
@@ -15,7 +15,7 @@ clock = pygame.time.Clock()
 
 pantalla_juego = Nivel.Pantalla(screen)
 enemy = Enemy.Enemy(screen)
-luna = Luna.Luna((0, pantalla_alto - 128 - 76))
+player = Player.player((0, pantalla_alto - 128 - 76))
 music = Music.Music()
 
 nivel = 0
@@ -33,22 +33,22 @@ while not done:
 
     screen.blit(bg, [0, 0])
 
-    if luna.pantallaLuna == 0:
+    if player.pantallaplayer == 0:
         pantalla_juego.inicio()
 
-    if luna.pantallaLuna > 0:
+    if player.pantallaplayer > 0:
         pantalla_juego.nivel_Dos()
 
-    if luna.pantallaLuna > 1:  # Cambiado a 1 para nivel tres, ya que parece que nivel 1 es cuando luna.pantallaLuna > 0
+    if player.pantallaplayer > 1:  # Cambiado a 1 para nivel tres, ya que parece que nivel 1 es cuando player.pantallaplayer > 0
         pantalla_juego.nivel_Tres()
 
     enemy.draw_all()
-    enemy.colisiones(luna.rect, luna)
+    enemy.colisiones(player.rect, player)
     enemy.movecube()
 
-    pantalla = luna.handle_event(event)
-    screen.blit(luna.image, luna.rect)
-    luna.jump()
+    pantalla = player.handle_event(event)
+    screen.blit(player.image, player.rect)
+    player.jump()
      # Llamar a la función desde la instancia de luna
 
     pygame.display.flip()

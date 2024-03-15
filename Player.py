@@ -6,11 +6,11 @@ import pygame
 from Music import Music
 
 # ****************************************************************
-class Luna(pygame.sprite.Sprite):
+class player(pygame.sprite.Sprite):
     # Constructor
     def __init__(self, position):
         pygame.sprite.Sprite.__init__(self)
-        self.sheet = pygame.image.load("../mio_ultimo/images/imagesuno/luna.png")
+        self.sheet = pygame.image.load("../mio_ultimo/images/imagesuno/player.png")
         self.sheet.set_clip(pygame.Rect(0, 152, 52, 76))
         self.image = self.sheet.subsurface(self.sheet.get_clip())
         self.rect = self.image.get_rect()
@@ -37,7 +37,7 @@ class Luna(pygame.sprite.Sprite):
             3: (156, 0, 52, 76),
         }
         self.music = Music()
-        self.pantallaLuna = 0
+        self.pantallaplayer = 0
         self.dead = True
         self.size_cubo = 128
 
@@ -65,7 +65,7 @@ class Luna(pygame.sprite.Sprite):
             self.rect.x += speed
         else:
             self.rect.x = 0
-            self.pantallaLuna += 1
+            self.pantallaplayer += 1
 
         if x < -100 and self.dead:
             self.clip(self.left_states)
@@ -86,7 +86,7 @@ class Luna(pygame.sprite.Sprite):
                 self.rect.x += 10
             else:
                 self.rect.x = 0
-                self.pantallaLuna += 1
+                self.pantallaplayer += 1
         if direction == "stand_left":
             self.clip(self.left_states[0])
         if direction == "stand_right":
@@ -112,7 +112,7 @@ class Luna(pygame.sprite.Sprite):
                     self.update("stand_right")
                 if event.key == pygame.K_LEFT and self.dead:
                     self.update("stand_left")
-            return self.pantallaLuna
+            return self.pantallaplayer
 
     def jump(self):
         if self.isJump:
